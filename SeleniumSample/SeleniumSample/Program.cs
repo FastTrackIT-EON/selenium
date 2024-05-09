@@ -13,7 +13,7 @@ namespace SeleniumSample
                 () => new ChromeDriver(),
                 new ConsoleLogger());
 
-            engine.Execute(new AccuweatherAutomationScript());
+            engine.Execute(new AccuweatherAutomationScript("Cluj-Napoca"));
 
             Console.WriteLine("Press any key to close...");
             Console.ReadKey();

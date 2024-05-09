@@ -4,13 +4,24 @@ using OpenQA.Selenium.Support.UI;
 using SeleniumSample.Extensions;
 using SeleniumSample.Infrastructure;
 using System;
+using System.IO;
 using System.Linq;
 
 namespace SeleniumSample
 {
     public class AccuweatherAutomationScript : IAutomationScript
     {
-        public string CityName { get; } = "Cluj-Napoca";
+        public AccuweatherAutomationScript(string cityName)
+        {
+            if (string.IsNullOrWhiteSpace(cityName))
+            {
+                throw new ArgumentNullException(nameof(cityName));
+            }
+
+            CityName = cityName;
+        }
+
+        public string CityName { get; }
 
         public void Execute(IWebDriver webDriver)
         {
@@ -93,11 +104,20 @@ namespace SeleniumSample
             {
                 throw new AutomationException($"Unable to load content page for {CityName}");
             }
+            else
+            {
+                // TODO: remove this after fixing the issue with ad overlay!!!
+                File.WriteAllText("Page.html", webDriver.PageSource);
+            }
 
-            CloseAdFrameOnCityPage(webDriver);
+            // issue here due ad overlay!!!
+            //CloseAdFrameOnCityPage(webDriver);
 
-            contentCityWeather = wait.ForElement(By.CssSelector("div.page-content"));
-            wait.ForChildElement(contentCityWeather, By.CssSelector("div.temp"));
+            IWebElement wheaterTempContainer = wait.ForElement(By.CssSelector("div.temp"));
+            if (wheaterTempContainer != null)
+            {
+                Console.Write($"Wheather in {CityName} is {wheaterTempContainer.Text}");
+            }
 
             webDriver.TakeScreenshot().SaveAsFile("Screenshoot.png");
         }
