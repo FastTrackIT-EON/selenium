@@ -1,8 +1,8 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.Extensions;
 using OpenQA.Selenium.Support.UI;
-using SeleniumSample.Extensions;
-using SeleniumSample.Infrastructure;
+using Selenium.Infrastructure;
+using Selenium.Infrastructure.Extensions;
 using System;
 using System.IO;
 using System.Linq;

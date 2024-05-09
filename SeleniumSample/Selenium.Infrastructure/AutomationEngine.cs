@@ -2,7 +2,7 @@
 using System;
 using System.Runtime.ExceptionServices;
 
-namespace SeleniumSample.Infrastructure
+namespace Selenium.Infrastructure
 {
     public class AutomationEngine
     {
@@ -12,7 +12,7 @@ namespace SeleniumSample.Infrastructure
         public AutomationEngine(
             Func<IWebDriver> webDriverFactory,
             ILogger logger)
-        { 
+        {
             _webDriverFactory = webDriverFactory ?? throw new ArgumentNullException(nameof(webDriverFactory));
             _logger = logger ?? throw new ArgumentNullException(nameof(_logger));
         }
@@ -21,11 +21,11 @@ namespace SeleniumSample.Infrastructure
         {
             ExceptionDispatchInfo edi = null;
 
-            using (IWebDriver driver = _webDriverFactory.Invoke())
+            using (IWebDriver webDriver = _webDriverFactory.Invoke())
             {
                 try
                 {
-                    script.Execute(driver);
+                    script.Execute(webDriver);
                 }
                 catch (Exception ex)
                 {
@@ -36,11 +36,11 @@ namespace SeleniumSample.Infrastructure
                 }
                 finally
                 {
-                    driver.Quit();
+                    webDriver.Quit();
                 }
             }
 
-            edi?.Throw(); 
+            edi?.Throw();
         }
     }
 }

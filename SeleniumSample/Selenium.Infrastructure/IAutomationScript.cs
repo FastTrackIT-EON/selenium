@@ -1,6 +1,6 @@
 ﻿using OpenQA.Selenium;
 
-namespace SeleniumSample.Infrastructure
+namespace Selenium.Infrastructure
 {
     public interface IAutomationScript
     {

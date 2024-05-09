@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace SeleniumSample.Extensions
+namespace Selenium.Infrastructure.Extensions
 {
     public static class SearchContextExtensions
     {

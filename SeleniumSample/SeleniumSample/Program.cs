@@ -1,5 +1,5 @@
 ﻿using OpenQA.Selenium.Chrome;
-using SeleniumSample.Infrastructure;
+using Selenium.Infrastructure;
 using SeleniumSample.Logging;
 using System;
 

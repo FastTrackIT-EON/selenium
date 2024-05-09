@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SeleniumSample.Infrastructure
+namespace Selenium.Infrastructure
 {
     public interface ILogger
     {

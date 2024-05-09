@@ -1,10 +1,10 @@
-﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
+﻿using OpenQA.Selenium.Support.UI;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace SeleniumSample.Extensions
+namespace Selenium.Infrastructure.Extensions
 {
     public static class WebDriverWaitExtensions
     {
@@ -36,7 +36,7 @@ namespace SeleniumSample.Extensions
             {
                 // child element didn't appeared in the specified timeout
                 return null;
-            }          
+            }
         }
 
         public static IReadOnlyList<IWebElement> ForElementsThat(
